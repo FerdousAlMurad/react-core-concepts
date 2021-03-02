@@ -1,5 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
+import { useState } from 'react';
 
 function App() {
   // var person = {
@@ -20,12 +21,14 @@ function App() {
     {name: 'Photoshop', price: '$90.99'},
     {name: 'Adobe', price: '$60.99'},
     {name: 'Pdf Reader', price: '$6.99'}
-  
   ]
   return (
     <div className="App">
       <header className="App-header">
         <p>I am a react person </p>
+
+        <Counter> </Counter>
+
         <Product name={products[0].name} price={products[0].price}> </Product>
         <Product name={products[1].name} price={products[1].price}> </Product>
         <Person name="Rubel" naika="Moushumi"> </Person>
@@ -53,6 +56,22 @@ function App() {
     </div>
   );
 }
+
+function Counter() {
+  const [count, setCount] =useState(10);
+  const handleIncrease = () => {
+    const newCount= count+1;
+    setCount(newCount);
+  };
+  return(
+    <div>
+    <h1> Count:{count} </h1>
+    <button onClick={()=> setCount(count-1)}> Decrease</button>
+    <button onClick={handleIncrease}> Increase </button>
+    </div>
+  )
+}
+
 function Product(props){
   const productStyle ={
     border:'1px solid gray',
